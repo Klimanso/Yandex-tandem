@@ -7,7 +7,7 @@ var mongoose = require('libs/mongoose');
 var log = require('libs/log')(module);
 var HttpError = require('error').HttpError;
 
-app.set('port', config.get('port'));
+app.set('port', process.env.PORT || config.get('port'));
 
 app.engine('ejs', require('ejs-locals'));
 app.set('views', path.join(__dirname, 'templates'));
