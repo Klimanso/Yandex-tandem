@@ -4,7 +4,8 @@ var User = require('./../../models/user').User,
 exports.post = function(req, res, next){
     if(!req.session.user) return next();
 
-    var fileName = req.body.fileName;
+    var fileName = req.body.fileName.replace('.png','.jpg');
+
     User.updateInformation(req.session.user, { background: '/images/backgrounds/' + fileName }, function(err, user){
         if(err){
             if( err instanceof AuthError){

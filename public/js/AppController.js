@@ -781,7 +781,9 @@ var AppController = (function(){
                 },
                 url: '/setbackground',
                 success: function(status, statustext, res){
-                    DOMElements.centerPanel.style.background = 'url(' + res + ')';
+                    debugger;
+                    var t = res.replace(/\\/g, '/');
+                    DOMElements.centerPanel.style.background = 'url(' + t + ')';
                 },
                 error: function(status, statusText, res){
                     var error = JSON.parse(err);
