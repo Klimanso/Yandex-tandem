@@ -1,0 +1,25 @@
+<% layout('layout/logAndReg') -%>
+<% block('title', 'Регистрация') -%>
+
+<div id="login">
+    <h1>Регистрация</h1>
+    <div class="wrap">
+        <div class="err-for-username"></div>
+        <span class="fontawesome-user"></span>
+        <input type="text" id="username" placeholder="Логин">
+
+        <div class="err-for-email"></div>
+        <span class="fontawesome-desktop"></span>
+        <input type="text" id="email" placeholder="Email">
+
+        <div class="err-for-password"></div>
+        <span class="fontawesome-lock"></span>
+        <input type="password" id="password-1" placeholder="Пароль">
+        <input type="password" id="password-2" placeholder="Повторите пароль">
+
+        <input class="submit-button" type="submit" value="Зарегестрироваться">
+    </div>
+    <p>Есть аккаунт? &nbsp;&nbsp;<a href="login">Войти</a><span class="fontawesome-arrow-right"></span></p>
+</div>
+<script type="text/javascript" src="/js/ControlHelper.js"></script>
+<script type="text/javascript" src="/js/Registration.js"></script>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/projectStyle.css">
+    <title>Яндекс Тандем</title>
+</head>
+<body>
+    <!-- Три главные рабочие области страницы -->
+    <div class="three-tabs-container">
+
+        <!-- Левая панель навигации (PW) -->
+        <div class="left-panel">
+            <div class="left-navigation-panel">
+
+                <!-- Заголовок с лого Компании и названием проекта -->
+                <div class="header">
+                    <div class="site-logo"></div>
+                    <span class="logo-text">тандем</span>
+                </div>
+
+                <div class="info-container">
+
+                    <!-- Блок с поиском и редкатированием информации о юзере -->
+                    <div class="left-panel-nav-bar">
+
+                        <!-- Поиск -->
+                        <div class="search-wrapper">
+                            <div class="form-wrapper cf">
+                                <input class="search-input" type="text" placeholder="Поиск задачи..." required>
+                                <button class="search-button" type="submit">Искать</button>
+                            </div>
+                        </div>
+
+                        <!-- Блок о Юзере -->
+                        <div class="user-navigator">
+
+                            <!-- Фото Юзера -->
+                            <div class="user-photo-wrap">
+                                <div class="user-photo user-image" style="background:<%-  user.photo !== ' ' ? 'url(' + user.photo +')': '' %>"></div>
+                            </div>
+
+                            <!-- Логин Юзера -->
+                            <div class="user-name-wrap">
+                                <span class="user-name-text"><%= user.get('username')%></span>
+                            </div>
+
+                            <!-- Клавиши управления профелем -->
+                            <div class="user-buttons-wrap">
+
+                                <!-- Клавиша редактирования данных в Popup меню с выбором фона -->
+                                <div class="settings-button ya-yellow">
+
+                                    <!--Сама клавиша -->
+                                    <div class="settings-img image-button"></div>
+
+                                    <!-- Раскрывающееся меню Popup -->
+                                    <div class="control-menu-wrap">
+                                        <ul class="control-menu">
+
+                                            <!-- Выбор фона главной рабочей области -->
+                                            <li class="separator backgrounds-thumbs">
+                                                <a>Изменить фоновое изображение:</a>
+                                            </li>
+
+                                            <!-- Редкатировать профиль в модальном окне -->
+                                            <li>
+                                                <a class="open-modal-button">Редактировать профиль</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Клавиша для разлогирования -->
+                                <div class="logout-button ya-yellow">
+                                    <div class="logout-img image-button"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Таббы с информацией -->
+                    <div class="tabbed-view">
+                        <div class="tabs">
+
+                            <!-- Клавишы (Сами кнопки таббов)-->
+                            <input id="tab_1" type="radio" name="tab" checked="checked" />
+                            <input id="tab_2" type="radio" name="tab" />
+
+                            <label for="tab_1" id="tab_l1">Список дел</label>
+                            <label for="tab_2" id="tab_l2">Дополнительно</label>
+
+                            <div class="tabs_cont">
+
+                                <!-- Содержимое первого табба (Список дел) -->
+                                <div id="tab_c1">
+                                    <div class="project-info">
+
+                                        <!-- Клавиша для создания проекта -->
+                                        <div class="annotate-button">
+                                            <span class="annotate">Добавить</span>
+                                            <div class="annotate-button-small ya-yellow in-annotate">
+                                                <div class="image-button plus-img"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода названия -->
+                                        <div class="new-project-name">
+                                            <input type="text" placeholder="Название списка..." class="new-project-name-input">
+                                        </div>
+
+                                        <!-- Список проектов (дел) -->
+                                        <div class="projects-list beautiful-scroll">
+                                            <div class="empty-list">Список проектов пуст</div>
+                                            <ol class="more-list" id="projects-list"></ol>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Содержимое второго табба (Дополнительно)-->
+                                <div id="tab_c2">
+                                    <div class="project-info">
+                                        <div class="projects-list">
+                                            <ol class="more-list">
+                                                <li>
+                                                    <div class="more-list-icon">
+                                                        <div class="icon calendar-img"></div>
+                                                    </div>
+                                                    <span>Календарь</span>
+                                                </li>
+                                                <li>
+                                                    <div class="more-list-icon">
+                                                        <div class="icon today-img"></div>
+                                                    </div>
+                                                    <span>Сегодня</span>
+                                                </li>
+                                                <li>
+                                                    <div class="more-list-icon">
+                                                        <div class="icon favorite-list-img"></div>
+                                                    </div>
+                                                    <span>Отмеченные</span>
+                                                </li>
+                                                <li>
+                                                    <div class="more-list-icon">
+                                                        <div class="icon assigned-img"></div>
+                                                    </div>
+                                                    <span>Назначенные мне</span>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer сайта -->
+                <div class="panel-footer">
+                    <span class="footer-text">Яндекс тандем beta</span>
+                    <span>© Суинов Герай 2014</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Главное окно редактирования информации в списке дел -->
+        <div class="list-bar-panel" style="background: <%= 'url(' + user.background  + ')'%>">
+
+            <!-- Заголовоек панели -->
+            <div class="list-bar-header">
+                <!-- Кнопка для отображения панели на весь экран -->
+                <div class="button-dark toggle-menu">
+                    <div class="list-toggle-image"></div>
+                </div>
+
+                <!-- Названия открытого списка -->
+                <h1 class="list-bar-title"></h1>
+            </div>
+
+            <!-- Меню управления списком (выпадающий список)-->
+            <div class="list-bar-menu-wrapper-top">
+                <div class="list-bar-menu">
+
+                    <!-- Добавить задачу -->
+                    <div>
+                        <span class="add-task icon"></span>
+                        <ul class="collapse-menu">
+                            <li><a class="open-menu-tab add-task-button">Добавить задачу</a></li>
+                        </ul>
+                    </div>
+                    <hr class="separator-vr"/>
+
+                    <!-- Добавить участника -->
+                    <div>
+                        <span class="invite-people icon"></span>
+                        <ul class="collapse-menu">
+                            <li class="assign-user-wrap">
+                                <div class="assign-header">Пригласить друзей</div>
+                                <div class="assign-image-wrap">
+                                    <div class="assign-image icon"></div>
+                                </div>
+                                <div class="assign-user-text">Ваши друзья получат возможность создавать, удалять и комментировать задачи в этом списке дел</div>
+                                <div class="input-assign-wrapper">
+                                    <div class="login-email-error"></div>
+                                    <input type="email" class="input-assign-user elegance" placeholder="Логин или Email...">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr class="separator-vr"/>
+
+                    <!-- Просмотреть всех участников -->
+                    <div>
+                        <span class="all-people icon"></span>
+                        <ul class="collapse-menu">
+                            <li class="all-assigned-users">
+                                <div class="assign-table-header">Все участники</div>
+
+                                <!-- Список всех подписанніх юзеров -->
+                                <ol class="assigned-users-table beautiful-scroll"></ol>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr class="separator-vr"/>
+
+
+                    <!-- Удалить список -->
+                    <div>
+                        <span class="delete-project icon"></span>
+                        <ul class="collapse-menu">
+                            <li><a class="open-menu-tab delete-current-project">Удалить список</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Поле ввода названия задачи -->
+            <div class="add-task-container">
+                <input class="add-task-input" type="text" placeholder="Название задачи...">
+            </div>
+
+            <h2 class="error-message-task"></h2>
+
+            <!-- Контейнер со всеми отсортированными задачами -->
+            <div class="task-list beautiful-scroll">
+                <ol class="non-completed-tasks">
+                </ol>
+                <h2 class="heading-completed" data-default-text="Выполенные задачи:"></h2>
+                <ol class="completed-tasks">
+                </ol>
+            </div>
+        </div>
+
+        <!-- Правая панель редактирования информации о задаче -->
+        <div class="right-edit-case-panel">
+            <!-- Заголовок панели -->
+            <div class="edit-case-header">
+
+                <!-- Изменение состояния готовности задачи -->
+                <div class="checkbox">
+                    <div class="checkbox-img icon edit-panel-state"></div>
+                </div>
+
+                <!-- Название задачи -->
+                <span class="case-name">Прикольно с картинкой</span>
+
+            </div>
+
+            <!-- Блок с редактирвоанием информации -->
+            <div class="edit-info">
+                <ol class="edit-info-list">
+
+                    <!-- Редактирование срока выполнения данной задачи -->
+                    <li class="separator">
+                        <div class="icon-wrap">
+                            <div class="timing-icon icon"></div>
+                        </div>
+                        <input type="date" class="elegance task-date-input">
+                        <div class="current-task-term"></div>
+                    </li>
+
+                    <!-- Рекадктирование описания -->
+                    <li class="separator">
+                        <div class="textarea-wrapper">
+                            <textarea class="case-annotate elegance area"></textarea>
+                        </div>
+                        <div class="save-task-button-wrap">
+                            <div class="ya-yellow save-task-button">Сохранить</div>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Блок с комментариями к задаче -->
+            <div class="case-comments beautiful-scroll">
+                <ol class="comment-list">
+                </ol>
+            </div>
+
+            <!-- Поле ввода текста комментария -->
+            <div class="textarea-wrapper">
+                <textarea class="add-comment elegance area beautiful-scroll" data-ph="Добавить комментарий..." contenteditable="true"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно с информацией о Юзере -->
+    <div class="md-modal">
+        <div class="md-content">
+
+            <!-- Заголовок -->
+            <div class="md-header">
+                <div class="text">Настройки</div>
+                <div class="md-close">
+                    <div class="icon close-img"></div>
+                </div>
+            </div>
+
+            <!-- Основная часть -->
+            <div class="md-container separator">
+
+                <!-- Фото юзера и инструкции редактирования -->
+                <div class="user-image-editable-wrapper">
+                    <div class="user-image-editable">
+                        <div class="user-image md-image" style="background:<%-  user.photo ? 'url(' + user.photo +')': '' %>"></div>
+                    </div>
+                    <div class="image-controller-wrap">
+                        <div class="download">
+                            <div class="icon download-img"></div>
+                            <div class="text">Загрузить</div>
+                        </div>
+                        <div class="delete">
+                            <div class="icon delete-user-image-img"></div>
+                            <div class="text">Удалить</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Основной блок редактирования информации -->
+                <div class="user-information-editable-wrapper">
+
+                    <!-- Логин -->
+                    <div class="user-name col">
+                        <div class="err-username err"></div>
+                        <div class="text-left">Логин</div>
+                        <input type="text" placeholder="Имя" class="name-input elegance" value="<%=user.username%>">
+                    </div>
+
+                    <!-- Email -->
+                    <div class="user-email col">
+                        <div class="err-email err"></div>
+                        <div class="text-left">Email</div>
+                        <input type="email" placeholder="Email" class="email-input elegance" value="<%=user.email%>">
+                    </div>
+
+                    <!-- Возраст -->
+                    <div class="user-age col">
+                        <div class="err-age err"></div>
+                        <div class="text-left">Возраст</div>
+                        <input type="number" class="age-input elegance" min="1" max="99" value="<%=user.age%>">
+                    </div>
+
+                    <!-- Смена пароля -->
+                    <div class="user-male col">
+                        <div class="err-password err"></div>
+                        <div class="text-left">Пароль</div>
+                        <input type="password" class="new-pas-input elegance pas" placeholder="Новый пароль">
+                        <input type="password" class="new-pas-input-duplicate elegance pas" placeholder="Повторите новый пароль">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Клавиша сохранения -->
+            <div class="button-container">
+                <div class="ya-yellow submit-button">Сохранить</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Обертка над body при открытии модального окна -->
+    <div class="md-overlay"></div>
+
+    <script type="text/javascript" src="/js/Projects.js"></script>
+    <script> var projectsDb = new Projects(<%- projects %>); </script>
+    <script type="text/javascript" src="/js/ControlHelper.js"></script>
+    <script type="text/javascript" src="/js/UIEffectController.js"></script>
+    <script type="text/javascript" src="/js/UIItemCreator.js"></script>
+    <script type="text/javascript" src="/js/AppController.js"></script>
+</body>
+</html>
