@@ -1,5 +1,5 @@
-var User = require('models/user').User,
-    HttpError = require('error').HttpError,
+var User = require('./../../models/user').User,
+    HttpError = require('./../../error').HttpError,
     Formidable = require('formidable');
 
 exports.post = function(req, res, next){

@@ -1,4 +1,4 @@
-var Project = require('models/project').Project;
+var Project = require('./../models/project').Project;
 
 module.exports = function(req, res, next) {
     req.projects = res.locals.projects = null;

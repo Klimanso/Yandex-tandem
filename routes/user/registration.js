@@ -1,6 +1,6 @@
-var User = require('models/user').User,
-    AuthError = require('models/user').AuthError,
-    HttpError = require('error').HttpError;
+var User = require('./../../models/user').User,
+    AuthError = require('./../../models/user').AuthError,
+    HttpError = require('./../../error').HttpError;
 
 
 exports.get = function(req, res){

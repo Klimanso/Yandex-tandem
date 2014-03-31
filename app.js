@@ -2,10 +2,10 @@ var express = require('express');
 var app = express();
 var http = require('http');
 var path = require('path');
-var config = require('config');
-var mongoose = require('libs/mongoose');
-var log = require('libs/log')(module);
-var HttpError = require('error').HttpError;
+var config = require('./config');
+var mongoose = require('./libs/mongoose');
+var log = require('./libs/log')(module);
+var HttpError = require('./error').HttpError;
 
 app.set('port', process.env.PORT || config.get('port'));
 
@@ -31,13 +31,13 @@ app.use(express.session({
     store: new MongoStore({ mongoose_connection: mongoose.connection })
 })); // connect.sid
 
-app.use(require('middleware/sendHttpError'));
-app.use(require('middleware/loadUser'));
-app.use(require('middleware/loadUserProjects'));
+app.use(require('./middleware/sendHttpError'));
+app.use(require('./middleware/loadUser'));
+app.use(require('./middleware/loadUserProjects'));
 
 app.use(app.router);
 
-require('routes')(app);
+require('./routes')(app);
 
 app.use('/', express.static(path.join(__dirname, '/public')));
 

@@ -1,6 +1,6 @@
-var User = require('models/user').User,
-    AuthError = require('models/user').AuthError,
-    HttpError = require('error').HttpError;
+var User = require('./../../models/user').User,
+    AuthError = require('./../../models/user').AuthError,
+    HttpError = require('./../../error').HttpError;
 
 exports.post = function(req, res, next){
     if(!req.session.user) return next();

@@ -1,7 +1,7 @@
-var Task = require('models/task').Task,
-    TaskError = require('models/task').TaskError,
-    HttpError = require('error').HttpError,
-    Comment = require('models/comment').Comment;
+var Task = require('./../../models/task').Task,
+    TaskError = require('./../../models/task').TaskError,
+    HttpError = require('./../../error').HttpError,
+    Comment = require('./../../models/comment').Comment;
 
 exports.get = function(req, res, next){
     if(!req.session.user) return next();

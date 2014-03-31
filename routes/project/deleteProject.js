@@ -1,7 +1,7 @@
-var Project = require('models/project').Project,
-    ProjError = require('models/project').ProjError,
-    HttpError = require('error').HttpError,
-    Task = require('models/task').Task;
+var Project = require('./../../models/project').Project,
+    ProjError = require('./../../models/project').ProjError,
+    HttpError = require('./../../error').HttpError,
+    Task = require('./../../models/task').Task;
 
 exports.get = function(req, res, next){
     if(!req.session.user) return next();

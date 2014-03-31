@@ -1,6 +1,6 @@
-var Project = require('models/project').Project,
-    ProjError = require('models/project').ProjError,
-    HttpError = require('error').HttpError;
+var Project = require('./../../models/project').Project,
+    ProjError = require('./../../models/project').ProjError,
+    HttpError = require('./../../error').HttpError;
 
 exports.post = function(req, res, next){
     if(!req.session.user) return next();

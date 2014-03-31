@@ -1,7 +1,7 @@
-var Comment = require('models/comment').Comment,
-    User = require('models/user').User,
-    CommentError = require('models/comment').CommentError,
-    HttpError = require('error').HttpError;
+var Comment = require('./../../models/comment').Comment,
+    User = require('./../../models/user').User,
+    CommentError = require('./../../models/comment').CommentError,
+    HttpError = require('./../../error').HttpError;
 
 exports.post = function(req, res, next){
     if(!req.session.user) return next();
