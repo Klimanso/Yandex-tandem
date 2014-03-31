@@ -1,0 +1,22 @@
+{
+    "port": 3000,
+    "mongoose": {
+        "uri": "mongodb://geray:20072506g@ds037067.mongolab.com:37067/yandex-journal",
+        "options": {
+            "server": {
+                "socketOptions": {
+                    "keepAlive": 1
+                }
+            }
+        }
+    },
+    "session": {
+        "secret": "KillerIsJim",
+        "key": "sid",
+        "cookie": {
+            "path": "/",
+            "httpOnly": true,
+            "maxAge": null
+        }
+    }
+}
